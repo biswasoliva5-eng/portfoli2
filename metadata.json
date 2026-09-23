@@ -1,0 +1,6 @@
+{
+  "name": "Oliva Biswas — Artist Portfolio",
+  "description": "Contemporary artist portfolio of Oliva Biswas featuring painting, drawing, sculpture, digital and experimental work with full CMS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

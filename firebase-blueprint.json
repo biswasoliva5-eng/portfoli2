@@ -1,0 +1,119 @@
+{
+  "$schema": "https://firebase.google.com/docs/firestore/blueprint-schema.json",
+  "entities": {
+    "site_settings": {
+      "type": "object",
+      "description": "Global portfolio configuration and display parameters",
+      "properties": {
+        "artistName": { "type": "string" },
+        "siteTitle": { "type": "string" },
+        "headerSubtitle": { "type": "string" },
+        "tagline": { "type": "string" },
+        "coverImage": { "type": "string" },
+        "coverTagline": { "type": "string" },
+        "enterButtonText": { "type": "string" },
+        "showCoverOnLanding": { "type": "boolean" },
+        "contactEmail": { "type": "string" },
+        "studioLocation": { "type": "string" }
+      },
+      "required": ["artistName", "siteTitle"]
+    },
+    "artworks": {
+      "type": "object",
+      "description": "Artist portfolio artwork catalog item",
+      "properties": {
+        "id": { "type": "string" },
+        "slug": { "type": "string" },
+        "title": { "type": "string" },
+        "year": { "type": "string" },
+        "categorySlug": { "type": "string" },
+        "categoryName": { "type": "string" },
+        "medium": { "type": "string" },
+        "dimensions": { "type": "string" },
+        "description": { "type": "string" },
+        "mainImage": { "type": "string" },
+        "isFeatured": { "type": "boolean" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["title", "slug", "mainImage"]
+    },
+    "categories": {
+      "type": "object",
+      "description": "Artwork categories",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "order": { "type": "number" }
+      },
+      "required": ["name", "slug"]
+    },
+    "exhibitions": {
+      "type": "object",
+      "description": "Exhibition records",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "year": { "type": "string" },
+        "venue": { "type": "string" },
+        "location": { "type": "string" },
+        "type": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["title", "venue"]
+    },
+    "about": {
+      "type": "object",
+      "description": "Artist biography, statement, and accolades",
+      "properties": {
+        "biography": { "type": "string" },
+        "statement": { "type": "string" },
+        "education": { "type": "string" },
+        "awards": { "type": "string" },
+        "residencies": { "type": "string" },
+        "collections": { "type": "string" },
+        "press": { "type": "string" }
+      }
+    },
+    "inquiries": {
+      "type": "object",
+      "description": "Contact form inquiries from visitors",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "receivedAt": { "type": "string" },
+        "read": { "type": "boolean" }
+      },
+      "required": ["name", "email", "message"]
+    }
+  },
+  "firestore": {
+    "site_settings/global": {
+      "schema": "site_settings",
+      "description": "Global settings document for the artist portfolio"
+    },
+    "artworks/{artworkId}": {
+      "schema": "artworks",
+      "description": "Artwork documents in the portfolio catalog"
+    },
+    "categories/{categoryId}": {
+      "schema": "categories",
+      "description": "Portfolio category documents"
+    },
+    "exhibitions/{exhibitionId}": {
+      "schema": "exhibitions",
+      "description": "Exhibition history documents"
+    },
+    "about/content": {
+      "schema": "about",
+      "description": "Single document holding biography, statement, and resume info"
+    },
+    "inquiries/{inquiryId}": {
+      "schema": "inquiries",
+      "description": "Public messages sent to artist studio"
+    }
+  }
+}

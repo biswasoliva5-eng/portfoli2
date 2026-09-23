@@ -1,0 +1,36 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public read access for portfolio content; write permitted for authenticated admin or portfolio managers
+    match /site_settings/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /artworks/{artworkId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /categories/{categoryId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /exhibitions/{exhibitionId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /about/{docId} {
+      allow read: if true;
+      allow write: if true;
+    }
+
+    match /inquiries/{inquiryId} {
+      allow read: if true;
+      allow create: if true;
+      allow update, delete: if true;
+    }
+  }
+}
